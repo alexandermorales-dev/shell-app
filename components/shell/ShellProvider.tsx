@@ -4,11 +4,7 @@ import { useState } from "react";
 import { Navbar } from "@/components/shell/Navbar";
 import { Sidebar } from "@/components/shell/Sidebar";
 import { Footer } from "@/components/shell/Footer";
-
-interface ShellProviderProps {
-  children: React.ReactNode;
-  userEmail?: string;
-}
+import { ShellProviderProps } from "@/types";
 
 export function ShellProvider({ children, userEmail }: ShellProviderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

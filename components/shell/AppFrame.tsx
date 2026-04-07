@@ -2,11 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Loader2 } from "lucide-react";
-
-interface AppFrameProps {
-  src: string;
-  title: string;
-}
+import { AppFrameProps } from "@/types";
 
 export function AppFrame({ src, title }: AppFrameProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);

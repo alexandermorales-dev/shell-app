@@ -9,25 +9,8 @@ import {
   BookOpen,
   ClipboardList,
   Award,
-  type LucideIcon,
 } from "lucide-react";
-
-export interface NavLink {
-  label: string;
-  path: string;
-  icon: LucideIcon;
-}
-
-export interface AppConfig {
-  id: string;
-  name: string;
-  description: string;
-  basePath: string;
-  upstreamUrl: string;
-  icon: LucideIcon;
-  color: string;
-  navLinks: NavLink[];
-}
+import { AppConfig, NavLink } from "@/types";
 
 export const apps: AppConfig[] = [
   {
@@ -51,7 +34,7 @@ export const apps: AppConfig[] = [
   {
     id: "capacitacion",
     name: "Capacitación",
-    description: "Plataforma de aprendizaje",
+    description: "Plataforma de formación y aprendizaje",
     basePath: "/capacitacion",
     upstreamUrl:
       process.env.NEXT_PUBLIC_CAPACITACION_URL ||

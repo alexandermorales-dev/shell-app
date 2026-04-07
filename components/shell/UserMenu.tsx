@@ -1,9 +1,6 @@
 import { LogOut } from "lucide-react";
 import { signOutAction } from "@/actions/auth";
-
-interface UserMenuProps {
-  userEmail: string;
-}
+import { UserMenuProps } from "@/types";
 
 export const UserMenu = ({ userEmail }: UserMenuProps) => {
   return (

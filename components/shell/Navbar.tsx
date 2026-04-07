@@ -1,15 +1,9 @@
-import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { AppBreadcrumb } from "./AppBreadcrumb";
 import { AppNavigation } from "./AppNavigation";
 import { UserMenu } from "./UserMenu";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-
-interface NavbarProps {
-  userEmail?: string;
-  onMobileMenuToggle: () => void;
-  isMobileMenuOpen: boolean;
-}
+import { NavbarProps } from "@/types";
 
 export const Navbar = ({
   userEmail,
