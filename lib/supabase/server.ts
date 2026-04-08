@@ -13,6 +13,11 @@ export async function createClient() {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
     {
+      cookieOptions: {
+        domain: ".shadevenezuela.com.ve",
+        sameSite: "lax",
+        secure: true,
+      },
       cookies: {
         getAll() {
           return cookieStore.getAll();
