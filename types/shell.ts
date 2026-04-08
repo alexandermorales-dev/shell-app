@@ -16,6 +16,7 @@ export interface FooterProps {
 
 export interface ShellProviderProps {
   children: React.ReactNode;
+  sidebar: React.ReactNode;
   userEmail?: string;
 }
 

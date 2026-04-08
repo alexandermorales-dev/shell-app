@@ -5,8 +5,10 @@ import { hasEnvVars } from "@/lib/utils";
 
 export default async function ShellLayout({
   children,
+  sidebar,
 }: {
   children: React.ReactNode;
+  sidebar: React.ReactNode;
 }) {
   let userEmail: string | undefined;
 
@@ -22,7 +24,7 @@ export default async function ShellLayout({
   }
 
   return (
-    <ShellProvider userEmail={userEmail}>
+    <ShellProvider userEmail={userEmail} sidebar={sidebar}>
       {children}
     </ShellProvider>
   );

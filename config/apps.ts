@@ -20,7 +20,7 @@ export const apps: AppConfig[] = [
     basePath: "/negocios",
     upstreamUrl:
       process.env.NEXT_PUBLIC_NEGOCIOS_URL ||
-      "http://eozliv55b6zunhgas3xe7y14.95.111.237.109.sslip.io",
+      "https://eozliv55b6zunhgas3xe7y14.95.111.237.109.sslip.io",
     icon: Briefcase,
     color: "text-blue-500",
     navLinks: [
@@ -28,7 +28,7 @@ export const apps: AppConfig[] = [
       { label: "Clientes", path: "/clientes", icon: Users },
       { label: "Documentos", path: "/documentos", icon: FileText },
       { label: "Reportes", path: "/reportes", icon: BarChart2 },
-      { label: "Configuración", path: "/configuracion", icon: Settings },
+      { label: "Configuración", path: "/configuracion", icon: Settings, allowedRoles: ["admin"] },
     ],
   },
   {
@@ -38,7 +38,7 @@ export const apps: AppConfig[] = [
     basePath: "/capacitacion",
     upstreamUrl:
       process.env.NEXT_PUBLIC_CAPACITACION_URL ||
-      "http://v9yt0f79ntxxikurez2rk2xc.95.111.237.109.sslip.io",
+      "https://v9yt0f79ntxxikurez2rk2xc.95.111.237.109.sslip.io",
     icon: GraduationCap,
     color: "text-emerald-500",
     navLinks: [
@@ -46,7 +46,7 @@ export const apps: AppConfig[] = [
       { label: "Cursos", path: "/cursos", icon: BookOpen },
       { label: "Evaluaciones", path: "/evaluaciones", icon: ClipboardList },
       { label: "Certificados", path: "/certificados", icon: Award },
-      { label: "Configuración", path: "/configuracion", icon: Settings },
+      { label: "Configuración", path: "/configuracion", icon: Settings, allowedRoles: ["admin"] },
     ],
   },
 ];
