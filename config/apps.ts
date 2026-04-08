@@ -3,14 +3,21 @@ import {
   GraduationCap,
   LayoutDashboard,
   Users,
-  FileText,
   BarChart2,
   Settings,
   BookOpen,
   ClipboardList,
   Award,
+  UserCheck,
+  FilePlus2,
+  CreditCard,
+  LayoutTemplate,
+  ListOrdered,
+  PenLine,
+  Building2,
+  Search,
 } from "lucide-react";
-import { AppConfig, NavLink } from "@/types";
+import { AppConfig } from "@/types";
 
 export const apps: AppConfig[] = [
   {
@@ -25,9 +32,8 @@ export const apps: AppConfig[] = [
     color: "text-blue-500",
     navLinks: [
       { label: "Dashboard", path: "/", icon: LayoutDashboard },
-      { label: "Clientes", path: "/clientes", icon: Users },
-      { label: "Documentos", path: "/documentos", icon: FileText },
-      { label: "Reportes", path: "/reportes", icon: BarChart2 },
+      { label: "Gestión de OSIs", path: "/dashboard/negocios/gestion-de-osis", icon: Building2 },
+      { label: "Reportes", path: "/dashboard/negocios/reportes", icon: BarChart2 },
       { label: "Configuración", path: "/configuracion", icon: Settings, allowedRoles: ["admin"] },
     ],
   },
@@ -43,10 +49,18 @@ export const apps: AppConfig[] = [
     color: "text-emerald-500",
     navLinks: [
       { label: "Dashboard", path: "/", icon: LayoutDashboard },
-      { label: "Cursos", path: "/cursos", icon: BookOpen },
-      { label: "Evaluaciones", path: "/evaluaciones", icon: ClipboardList },
-      { label: "Certificados", path: "/certificados", icon: Award },
-      { label: "Configuración", path: "/configuracion", icon: Settings, allowedRoles: ["admin"] },
+      { label: "Gestión de Cursos", path: "/dashboard/capacitacion/gestion-cursos", icon: BookOpen },
+      { label: "Participantes", path: "/dashboard/capacitacion/participantes", icon: Users },
+      { label: "Consulta de Participantes", path: "/dashboard/capacitacion/consulta-participantes", icon: Search },
+      { label: "Facilitadores", path: "/dashboard/capacitacion/gestion-de-facilitadores", icon: UserCheck },
+      { label: "Gestión de Certificados", path: "/dashboard/capacitacion/gestion-certificados", icon: Award },
+      { label: "Generación de Certificados", path: "/dashboard/capacitacion/generacion-certificado", icon: FilePlus2 },
+      { label: "Control de Secuencia", path: "/dashboard/capacitacion/control-secuencia", icon: ListOrdered },
+      { label: "Reportes", path: "/dashboard/capacitacion/reportes", icon: BarChart2 },
+      { label: "Plantillas de Carnets", path: "/dashboard/capacitacion/plantillas-carnets", icon: CreditCard, allowedRoles: ["admin"] },
+      { label: "Plantillas de Certificados", path: "/dashboard/capacitacion/plantillas-certificados", icon: LayoutTemplate, allowedRoles: ["admin"] },
+      { label: "Plantillas de Cursos", path: "/dashboard/capacitacion/gestion-plantillas-cursos", icon: ClipboardList, allowedRoles: ["admin"] },
+      { label: "Gestión de Firmas", path: "/dashboard/capacitacion/gestion-de-firmas", icon: PenLine, allowedRoles: ["admin"] },
     ],
   },
 ];
