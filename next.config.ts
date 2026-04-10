@@ -2,11 +2,11 @@ import type { NextConfig } from "next";
 
 const NEGOCIOS_URL =
   process.env.NEXT_PUBLIC_NEGOCIOS_URL ||
-  "https://eozliv55b6zunhgas3xe7y14.95.111.237.109.sslip.io";
+  "https://negocios.shadevenezuela.com.ve";
 
 const CAPACITACION_URL =
   process.env.NEXT_PUBLIC_CAPACITACION_URL ||
-  "https://v9yt0f79ntxxikurez2rk2xc.95.111.237.109.sslip.io";
+  "https://capacitacion.shadevenezuela.com.ve";
 
 const nextConfig: NextConfig = {
   async rewrites() {
