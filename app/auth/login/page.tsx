@@ -33,7 +33,7 @@ export default function Page() {
         <div className="w-full max-w-sm space-y-6">
           <div className="lg:hidden flex items-center gap-2 mb-8">
             <div className="h-5 w-5 rounded bg-foreground" />
-            <span className="font-semibold text-sm">Portal Empresarial</span>
+            <span className="font-semibold text-sm">PRISMA | SHA de Venezuela</span>
           </div>
           <div>
             <h1 className="text-xl font-semibold">Iniciar sesión</h1>
