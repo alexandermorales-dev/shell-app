@@ -5,6 +5,7 @@ import { AppBreadcrumb } from "./AppBreadcrumb";
 import { AppNavigation } from "./AppNavigation";
 import { UserMenu } from "./UserMenu";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import { NotificationsBell } from "./NotificationsBell";
 import { NavbarProps } from "@/types";
 
 export const Navbar = ({
@@ -43,6 +44,7 @@ export const Navbar = ({
       <div className="ml-auto flex items-center gap-2">
         <AppNavigation />
         <ThemeSwitcher />
+        <NotificationsBell />
         {userEmail && <UserMenu userEmail={userEmail} />}
       </div>
     </header>
