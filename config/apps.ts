@@ -31,12 +31,12 @@ import { AppConfig } from "@/types";
 export const apps: AppConfig[] = [
   {
     id: "negocios",
-    name: "Negocios",
+    name: "Gestión",
     description: "Gestión comercial y operativa",
     basePath: "/negocios",
     upstreamUrl:
       process.env.NEXT_PUBLIC_NEGOCIOS_URL ||
-      "https://negocios.shadevenezuela.com.ve",
+      "https://gestion.shadevenezuela.com.ve",
     icon: Briefcase,
     color: "text-blue-500",
     navLinks: [
