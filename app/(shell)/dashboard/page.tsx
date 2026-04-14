@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { apps } from "@/config/apps";
+import { NavLink, NavGroup } from "@/types";
 import { ArrowRight } from "lucide-react";
+
+function flattenNavLinks(navLinks: (NavLink | NavGroup)[]): NavLink[] {
+  return navLinks.flatMap((item) =>
+    "groupLabel" in item ? item.links : [item]
+  );
+}
 
 export default function DashboardPage() {
   return (
@@ -34,7 +41,7 @@ export default function DashboardPage() {
               </p>
             </div>
             <div className="flex gap-2 flex-wrap">
-              {app.navLinks.slice(0, 3).map((link) => (
+              {flattenNavLinks(app.navLinks).slice(0, 3).map((link) => (
                 <span
                   key={link.path}
                   className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground"
@@ -43,9 +50,9 @@ export default function DashboardPage() {
                   {link.label}
                 </span>
               ))}
-              {app.navLinks.length > 3 && (
+              {flattenNavLinks(app.navLinks).length > 3 && (
                 <span className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                  +{app.navLinks.length - 3} más
+                  +{flattenNavLinks(app.navLinks).length - 3} más
                 </span>
               )}
             </div>

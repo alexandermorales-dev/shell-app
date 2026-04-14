@@ -7,6 +7,11 @@ export interface NavLink {
   allowedRoles?: string[];
 }
 
+export interface NavGroup {
+  groupLabel: string;
+  links: NavLink[];
+}
+
 export interface AppConfig {
   id: string;
   name: string;
@@ -15,5 +20,5 @@ export interface AppConfig {
   upstreamUrl: string;
   icon: LucideIcon;
   color: string;
-  navLinks: NavLink[];
+  navLinks: (NavLink | NavGroup)[];
 }

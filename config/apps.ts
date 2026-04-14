@@ -16,6 +16,15 @@ import {
   PenLine,
   Building2,
   Search,
+  Package,
+  GitBranch,
+  Target,
+  Phone,
+  Handshake,
+  FileCheck,
+  UserCircle,
+  Calculator,
+  Receipt,
 } from "lucide-react";
 import { AppConfig } from "@/types";
 
@@ -31,10 +40,36 @@ export const apps: AppConfig[] = [
     icon: Briefcase,
     color: "text-blue-500",
     navLinks: [
-      { label: "Dashboard", path: "/", icon: LayoutDashboard },
-      { label: "Gestión de OSIs", path: "/dashboard/negocios/gestion-de-osis", icon: Building2 },
-      { label: "Reportes", path: "/dashboard/negocios/reportes", icon: BarChart2 },
-      { label: "Configuración", path: "/configuracion", icon: Settings, allowedRoles: ["admin"] },
+      {
+        groupLabel: "Directorio",
+        links: [
+          { label: "Empresas", path: "/directorio/empresas", icon: Building2 },
+          { label: "Servicios", path: "/directorio/servicios", icon: Package },
+          { label: "Usuarios", path: "/directorio/usuarios", icon: Users },
+          { label: "Facilitadores", path: "/directorio/facilitadores", icon: UserCheck },
+        ],
+      },
+      {
+        groupLabel: "Pipeline",
+        links: [
+          { label: "Pipeline", path: "/pipeline", icon: GitBranch },
+          { label: "Leads", path: "/crm/leads", icon: Target },
+          { label: "Contactos", path: "/pipeline/contactos", icon: Phone },
+          { label: "Tratos", path: "/pipeline/tratos", icon: Handshake },
+          { label: "Solpeds", path: "/pipeline/solpeds", icon: ClipboardList },
+          { label: "OSI", path: "/pipeline/osi", icon: FileCheck },
+          { label: "Clientes", path: "/pipeline/clientes", icon: UserCircle },
+        ],
+      },
+      {
+        groupLabel: "Ingeniería de costos",
+        links: [
+          { label: "ECC", path: "/ingenieria/ecc", icon: Calculator },
+          { label: "Catálogo de costos", path: "/ingenieria/catalogo-costos", icon: BookOpen },
+          { label: "Presupuestos", path: "/ingenieria/presupuestos", icon: Receipt },
+          { label: "OSI", path: "/ingenieria/osi", icon: FileCheck },
+        ],
+      },
     ],
   },
   {
