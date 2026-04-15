@@ -1,7 +1,17 @@
-import { getUserRole } from "@/actions/apps";
+import { getUserRolesByApp } from "@/actions/apps";
 import { SidebarNavClient } from "./SidebarNavClient";
+import { apps } from "@/config/apps";
 
 export async function AppSidebar() {
-  const userRole = await getUserRole();
-  return <SidebarNavClient userRole={userRole} />;
+  const dbRoles = await getUserRolesByApp();
+
+  const userRolesByApp: Record<string, string> = {};
+  for (const app of apps) {
+    const dbSlug = app.dbSlug ?? app.id;
+    if (dbRoles[dbSlug]) {
+      userRolesByApp[app.id] = dbRoles[dbSlug];
+    }
+  }
+
+  return <SidebarNavClient userRolesByApp={userRolesByApp} />;
 }

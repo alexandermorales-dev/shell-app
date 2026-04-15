@@ -19,3 +19,63 @@ export async function getUserRole(): Promise<string> {
     "user"
   );
 }
+
+export async function getUserRolesByApp(): Promise<Record<string, string>> {
+  try {
+    const supabase = await createClient();
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return {};
+
+    const { data: usuario, error: usuarioError } = await supabase
+      .from("usuarios")
+      .select("id")
+      .eq("id_auth", user.id)
+      .single();
+
+    if (usuarioError || !usuario) return {};
+
+    const { data: userRoles, error: rolesError } = await supabase
+      .rpc("get_user_roles_by_app", { p_usuario_id: usuario.id });
+
+    if (rolesError || !userRoles) return {};
+
+    const result: Record<string, string> = {};
+    for (const row of userRoles as { app_slug: string; role_slug: string }[]) {
+      if (row.app_slug && row.role_slug) {
+        result[row.app_slug] = row.role_slug;
+      }
+    }
+
+    return result;
+  } catch {
+    return {};
+  }
+}
+
+export async function getAppRoles(appSlug: string): Promise<string[]> {
+  try {
+    const supabase = await createClient();
+
+    const { data: app, error: appError } = await supabase
+      .schema("authprisma")
+      .from("apps")
+      .select("id")
+      .eq("slug", appSlug)
+      .single();
+
+    if (appError || !app) return [];
+
+    const { data: roles, error: rolesError } = await supabase
+      .schema("authprisma")
+      .from("roles")
+      .select("slug")
+      .eq("app_id", app.id);
+
+    if (rolesError || !roles) return [];
+
+    return roles.map((r: { slug: string }) => r.slug);
+  } catch {
+    return [];
+  }
+}

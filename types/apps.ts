@@ -14,6 +14,7 @@ export interface NavGroup {
 
 export interface AppConfig {
   id: string;
+  dbSlug?: string;
   name: string;
   description: string;
   basePath: string;

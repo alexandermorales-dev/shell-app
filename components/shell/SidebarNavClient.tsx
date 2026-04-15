@@ -13,10 +13,10 @@ function isNavGroup(item: NavLink | NavGroup): item is NavGroup {
 }
 
 interface SidebarNavClientProps {
-  userRole: string;
+  userRolesByApp: Record<string, string>;
 }
 
-export function SidebarNavClient({ userRole }: SidebarNavClientProps) {
+export function SidebarNavClient({ userRolesByApp }: SidebarNavClientProps) {
   const pathname = usePathname();
   const currentApp = getAppByPath(pathname);
   const { onClose } = useMobileSidebar();
@@ -88,19 +88,25 @@ export function SidebarNavClient({ userRole }: SidebarNavClientProps) {
     );
   };
 
+  const userRole = (userRolesByApp[currentApp.id] ?? "").toLowerCase();
+
+  const canAccess = (link: NavLink): boolean => {
+    if (!link.allowedRoles) return true;
+    if (!userRole) return false;
+    return link.allowedRoles.some((r) => r.toLowerCase() === userRole);
+  };
+
   const filteredItems = currentApp.navLinks
     .map((item) => {
       if (isNavGroup(item)) {
-        const filteredGroupLinks = item.links.filter(
-          (link) => !link.allowedRoles || link.allowedRoles.includes(userRole)
-        );
+        const filteredGroupLinks = item.links.filter(canAccess);
         return { ...item, links: filteredGroupLinks };
       }
       return item;
     })
     .filter((item) => {
       if (isNavGroup(item)) return item.links.length > 0;
-      return !item.allowedRoles || item.allowedRoles.includes(userRole);
+      return canAccess(item);
     });
 
   return (
