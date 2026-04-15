@@ -43,10 +43,10 @@ export const apps: AppConfig[] = [
       {
         groupLabel: "Directorio",
         links: [
-          { label: "Empresas", path: "/directorio/empresas", icon: Building2 , allowedRoles: ["admin"] },
-          { label: "Servicios", path: "/directorio/servicios", icon: Package , allowedRoles: ["admin"] },
-          { label: "Usuarios", path: "/directorio/usuarios", icon: Users , allowedRoles: ["admin"] },
-          { label: "Facilitadores", path: "/directorio/facilitadores", icon: UserCheck , allowedRoles: ["admin"] },
+          { label: "Empresas", path: "/directorio/empresas", icon: Building2 , allowedRoles: ["Admin"] },
+          { label: "Servicios", path: "/directorio/servicios", icon: Package , allowedRoles: ["Admin"] },
+          { label: "Usuarios", path: "/directorio/usuarios", icon: Users , allowedRoles: ["Admin"] },
+          { label: "Facilitadores", path: "/directorio/facilitadores", icon: UserCheck , allowedRoles: ["Admin"] },
         ],
       },
       {
