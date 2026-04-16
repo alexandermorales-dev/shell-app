@@ -127,8 +127,8 @@ export function NotificationsBell() {
       <button
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "relative p-2 rounded-md transition-colors text-muted-foreground hover:text-foreground hover:bg-muted",
-          open && "bg-muted text-foreground"
+          "relative p-2 rounded-md transition-colors text-blue-100/70 hover:text-white hover:bg-white/10",
+          open && "bg-white/10 text-white"
         )}
         aria-label="Notificaciones"
       >

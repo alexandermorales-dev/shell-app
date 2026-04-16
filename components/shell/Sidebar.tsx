@@ -10,23 +10,25 @@ export function Sidebar({ children }: { children: React.ReactNode }) {
     <>
       {isOpen && (
         <div
-          className="fixed inset-0 z-30 bg-background/80 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm lg:hidden"
           onClick={onClose}
         />
       )}
 
       <aside
         className={cn(
-          "fixed top-14 left-0 bottom-0 z-30 w-60 border-r border-border bg-background flex flex-col",
+          "fixed top-14 left-0 bottom-0 z-30 w-60 flex flex-col",
+          "border-r border-blue-900/40",
           "transition-transform duration-200 ease-in-out",
           "lg:translate-x-0 lg:static lg:top-0",
           isOpen ? "translate-x-0" : "-translate-x-full"
         )}
+        style={{ backgroundColor: 'var(--primary-blue)' }}
       >
         {children}
 
-        <div className="p-3 border-t border-border">
-          <p className="text-[10px] text-muted-foreground/50 text-center">
+        <div className="p-3 border-t border-blue-900/40">
+          <p className="text-[10px] text-blue-200/30 text-center">
             Shell v1.0
           </p>
         </div>

@@ -2,6 +2,131 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-blue: #0c3f69;
+  --primary-blue-hover: #0a344f;
+  --primary-red: #dc2626;
+  --primary-gray: #4b5563;
+}
+
+/* Puzzle piece animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out both;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* Custom scrollbar styling for sidebar */
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Firefox scrollbar styling */
+.sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+/* Sidebar micro-interactions */
+.sidebar-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.sidebar-link:hover::before {
+  left: 100%;
+}
+
+/* Smooth height transitions for expanding content */
+.sidebar-expand {
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+}
+
+/* Neon border effect for active sidebar items */
+.sidebar-neon-active {
+  border: 1px solid rgba(96, 165, 250, 0.7);
+  box-shadow:
+    0 0 8px rgba(96, 165, 250, 0.6),
+    0 0 20px rgba(96, 165, 250, 0.35),
+    inset 0 0 8px rgba(96, 165, 250, 0.15);
+  position: relative;
+}
+
+/* Neon border effect for active tabs */
+.tab-neon-active {
+  border: 2px solid var(--neon-color, #3b82f6);
+  box-shadow:
+    0 0 15px rgba(96, 165, 250, 0.8),
+    0 0 30px rgba(96, 165, 250, 0.6),
+    0 0 45px rgba(96, 165, 250, 0.4),
+    inset 0 0 15px rgba(96, 165, 250, 0.2);
+  position: relative;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

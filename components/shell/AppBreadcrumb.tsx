@@ -13,14 +13,14 @@ export const AppBreadcrumb = () => {
     <div className="flex items-center gap-2 text-sm">
       <Link
         href="/dashboard"
-        className="font-semibold text-foreground hover:text-foreground/80 transition-colors"
+        className="font-semibold text-white hover:text-white/80 transition-colors"
       >
         PRISMA
       </Link>
       {currentApp && (
         <>
-          <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
-          <span className="text-muted-foreground">{currentApp.name}</span>
+          <ChevronRight className="h-3.5 w-3.5 text-blue-200/60" />
+          <span className="text-blue-200/80">{currentApp.name}</span>
         </>
       )}
     </div>

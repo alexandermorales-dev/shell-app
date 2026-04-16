@@ -3,13 +3,6 @@
 import { cn } from "@/lib/utils";
 import { signInAction } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
@@ -19,62 +12,70 @@ import { useActionState } from "react";
 export const LoginForm = ({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<"div">) => {
+}: React.ComponentPropsWithoutRef<"form">) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [state, formAction] = useActionState(signInAction, null);
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">Iniciar sesión</CardTitle>
-          <CardDescription>
-            Ingresa tu correo electrónico para acceder a tu cuenta
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form action={formAction}>
-            <div className="flex flex-col gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Correo electrónico</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder="correo@ejemplo.com"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Contraseña</Label>
-                  <Link
-                    href="/auth/forgot-password"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    ¿Olvidaste tu contraseña?
-                  </Link>
-                </div>
-                <Input
-                  id="password"
-                  type="password"
-                  name="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              {state?.error && <p className="text-sm text-red-500">{state.error}</p>}
-              <Button type="submit" className="w-full">
-                Iniciar sesión
-              </Button>
-            </div>
-                      </form>
-        </CardContent>
-      </Card>
-    </div>
+    <form
+      action={formAction}
+      className={cn("flex flex-col gap-5", className)}
+      {...props}
+    >
+      <div className="grid gap-1.5">
+        <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+          Correo electrónico
+        </Label>
+        <Input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="correo@ejemplo.com"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="h-11 rounded-lg border-gray-200 bg-gray-50 focus:bg-white text-sm transition-colors"
+        />
+      </div>
+
+      <div className="grid gap-1.5">
+        <div className="flex items-center justify-between">
+          <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+            Contraseña
+          </Label>
+          <Link
+            href="/auth/forgot-password"
+            className="text-xs hover:underline underline-offset-4 transition-colors"
+            style={{ color: 'var(--primary-blue)' }}
+          >
+            ¿Olvidaste tu contraseña?
+          </Link>
+        </div>
+        <Input
+          id="password"
+          type="password"
+          name="password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="h-11 rounded-lg border-gray-200 bg-gray-50 focus:bg-white text-sm transition-colors"
+        />
+      </div>
+
+      {state?.error && (
+        <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+          {state.error}
+        </p>
+      )}
+
+      <Button
+        type="submit"
+        className="w-full h-11 rounded-lg text-sm font-semibold text-white mt-1 transition-opacity hover:opacity-90"
+        style={{ backgroundColor: 'var(--primary-blue)' }}
+      >
+        Iniciar sesión
+      </Button>
+    </form>
   );
 };
