@@ -8,6 +8,13 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./config/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  safelist: [
+    "bg-green-50", "text-green-700", "text-green-800", "border-green-200", "bg-green-700", "hover:bg-green-50",
+    "bg-amber-50", "text-amber-500", "text-amber-700", "border-amber-200", "bg-amber-500", "hover:bg-amber-50",
+    "bg-cyan-50", "text-cyan-400", "text-cyan-700", "border-cyan-200", "bg-cyan-400", "hover:bg-cyan-50",
+    "group-hover:text-green-700", "group-hover:text-amber-500", "group-hover:text-cyan-400",
   ],
   theme: {
     extend: {

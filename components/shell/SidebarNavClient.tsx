@@ -28,8 +28,8 @@ export function SidebarNavClient({ userPermsByApp }: SidebarNavClientProps) {
       className={cn(
         "flex items-center gap-2.5 px-3 py-2 rounded-md text-sm font-medium transition-all sidebar-link",
         pathname === "/dashboard"
-          ? "bg-slate-700/70 text-white"
-          : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
+          ? "bg-blue-50 text-blue-700 font-semibold"
+          : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
       )}
     >
       <Home className="h-4 w-4 shrink-0" />
@@ -42,21 +42,34 @@ export function SidebarNavClient({ userPermsByApp }: SidebarNavClientProps) {
       <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1 sidebar-scrollbar">
         {homeLink}
         <div className="pt-2 pb-1 px-3">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
             Aplicaciones
           </span>
         </div>
-        {apps.map((app) => (
-          <Link
-            key={app.id}
-            href={app.basePath}
-            onClick={onClose}
-            className="flex items-center gap-2.5 px-3 py-2 rounded-md text-sm font-medium transition-all sidebar-link text-slate-400 hover:text-slate-100 hover:bg-slate-800"
-          >
-            <app.icon className={cn("h-4 w-4 shrink-0", app.color)} />
-            {app.name}
-          </Link>
-        ))}
+        {apps.map((app) =>
+          app.id === "drive" ? (
+            <a
+              key={app.id}
+              href="https://drive.shadevenezuela.com.ve"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-3 py-2 rounded-md text-sm font-medium transition-all sidebar-link text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+            >
+              <app.icon className={cn("h-4 w-4 shrink-0", app.color)} />
+              {app.name}
+            </a>
+          ) : (
+            <Link
+              key={app.id}
+              href={app.basePath}
+              onClick={onClose}
+              className="flex items-center gap-2.5 px-3 py-2 rounded-md text-sm font-medium transition-all sidebar-link text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+            >
+              <app.icon className={cn("h-4 w-4 shrink-0", app.color)} />
+              {app.name}
+            </Link>
+          )
+        )}
       </nav>
     );
   }
@@ -69,7 +82,23 @@ export function SidebarNavClient({ userPermsByApp }: SidebarNavClientProps) {
           pathname === currentApp!.basePath + "/"
         : pathname.startsWith(fullPath);
 
-    return (
+    const isDrive = currentApp!.id === "drive";
+    const externalHref = isDrive
+      ? `${currentApp!.upstreamUrl}${link.path === "/" ? "" : link.path}`
+      : null;
+
+    return isDrive ? (
+      <a
+        key={link.path}
+        href={externalHref!}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative flex items-center gap-2.5 px-3 py-2 rounded-md text-sm transition-all sidebar-link text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+      >
+        <link.icon className="h-3.5 w-3.5 shrink-0" />
+        {link.label}
+      </a>
+    ) : (
       <Link
         key={link.path}
         href={fullPath || currentApp!.basePath}
@@ -78,8 +107,8 @@ export function SidebarNavClient({ userPermsByApp }: SidebarNavClientProps) {
         className={cn(
           "relative flex items-center gap-2.5 px-3 py-2 rounded-md text-sm transition-all sidebar-link",
           isActive
-            ? "bg-slate-700/70 text-white font-medium"
-            : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
+            ? "bg-blue-50 text-blue-700 font-semibold"
+            : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
         )}
       >
         <link.icon className="h-3.5 w-3.5 shrink-0" />
@@ -112,7 +141,7 @@ export function SidebarNavClient({ userPermsByApp }: SidebarNavClientProps) {
     <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1 sidebar-scrollbar">
       {homeLink}
       <div className="pt-2 pb-1 px-3">
-        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
           {currentApp.name}
         </span>
       </div>
@@ -121,7 +150,7 @@ export function SidebarNavClient({ userPermsByApp }: SidebarNavClientProps) {
           return (
             <div key={item.groupLabel}>
               <div className="pt-3 pb-1 px-3">
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                   {item.groupLabel}
                 </span>
               </div>

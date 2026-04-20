@@ -1,4 +1,5 @@
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/logo.png";
 import { AppBreadcrumb } from "./AppBreadcrumb";
@@ -13,10 +14,10 @@ export const Navbar = ({
   isMobileMenuOpen,
 }: NavbarProps) => {
   return (
-    <header className="h-14 border-b border-gray-200 bg-white flex items-center px-4 gap-3 sticky top-0 z-40 shadow-sm">
+    <header className="h-14 border-b border-slate-200 bg-white flex items-center px-4 gap-3 sticky top-0 z-40 shadow-sm">
       <button
         onClick={onMobileMenuToggle}
-        className="lg:hidden p-2 -ml-1 rounded-md hover:bg-gray-100 transition-colors text-gray-600"
+        className="lg:hidden p-2 -ml-1 rounded-md hover:bg-slate-100 transition-colors text-slate-600"
         aria-label="Toggle menu"
       >
         {isMobileMenuOpen ? (
@@ -26,7 +27,7 @@ export const Navbar = ({
         )}
       </button>
 
-      <div className="flex items-center shrink-0">
+      <Link href="/dashboard" className="flex items-center shrink-0">
         <Image
           src={logo}
           alt="SHA de Venezuela, C.A."
@@ -34,9 +35,9 @@ export const Navbar = ({
           className="h-9 w-auto object-contain rounded-sm bg-white px-1.5 py-0.5 shadow-sm"
           priority
         />
-      </div>
+      </Link>
 
-      <div className="hidden md:block w-px h-5 bg-gray-200 shrink-0" />
+      <div className="hidden md:block w-px h-5 bg-slate-200 shrink-0" />
 
       <AppBreadcrumb />
 

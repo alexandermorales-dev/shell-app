@@ -25,6 +25,7 @@ import {
   UserCircle,
   Calculator,
   Receipt,
+  Cloud,
 } from "lucide-react";
 import { AppConfig } from "@/types";
 
@@ -39,12 +40,12 @@ export const apps: AppConfig[] = [
       process.env.NEXT_PUBLIC_NEGOCIOS_URL ||
       "https://gestion.shadevenezuela.com.ve",
     icon: Briefcase,
-    color: "text-blue-500",
+    color: "text-green-700",
     badge: {
-      bg: "bg-blue-50",
-      text: "text-blue-700",
-      border: "border-blue-200",
-      dot: "bg-blue-500",
+      bg: "bg-green-50",
+      text: "text-green-800",
+      border: "border-green-200",
+      dot: "bg-green-700",
     },
     navLinks: [
       {
@@ -89,12 +90,12 @@ export const apps: AppConfig[] = [
       process.env.NEXT_PUBLIC_CAPACITACION_URL ||
       "https://capacitacion.shadevenezuela.com.ve",
     icon: GraduationCap,
-    color: "text-emerald-500",
+    color: "text-amber-500",
     badge: {
-      bg: "bg-emerald-50",
-      text: "text-emerald-700",
-      border: "border-emerald-200",
-      dot: "bg-emerald-500",
+      bg: "bg-amber-50",
+      text: "text-amber-700",
+      border: "border-amber-200",
+      dot: "bg-amber-500",
     },
     navLinks: [
       { label: "Dashboard", path: "/", icon: LayoutDashboard },
@@ -111,6 +112,25 @@ export const apps: AppConfig[] = [
       { label: "Plantillas de Cursos", path: "/dashboard/capacitacion/gestion-plantillas-cursos", icon: ClipboardList, requiredPermissions: ["scapacitacion:all:access"] },
       { label: "Gestión de Firmas", path: "/dashboard/capacitacion/gestion-de-firmas", icon: PenLine, requiredPermissions: ["scapacitacion:all:access"] },
     ],
+  },
+  {
+    id: "drive",
+    dbSlug: "sdrive",
+    name: "Drive",
+    description: "Almacenamiento y gestión de archivos",
+    basePath: "/drive",
+    upstreamUrl:
+      process.env.NEXT_PUBLIC_DRIVE_URL ||
+      "https://drive.shadevenezuela.com.ve",
+    icon: Cloud,
+    color: "text-cyan-400",
+    badge: {
+      bg: "bg-cyan-50",
+      text: "text-cyan-700",
+      border: "border-cyan-200",
+      dot: "bg-cyan-400",
+    },
+    navLinks: [],
   },
 ];
 
