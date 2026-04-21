@@ -54,7 +54,6 @@ export function AppFrame({ src, title }: AppFrameProps) {
           setHasError(true);
         }}
         allow="clipboard-read; clipboard-write"
-        sandbox="allow-same-origin allow-scripts allow-forms allow-modals allow-downloads allow-popups allow-popups-to-escape-sandbox"
       />
     </div>
   );
