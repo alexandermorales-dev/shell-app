@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useActionState } from "react";
 
@@ -15,6 +16,7 @@ export const LoginForm = ({
 }: React.ComponentPropsWithoutRef<"form">) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [state, formAction] = useActionState(signInAction, null);
 
   return (
@@ -52,15 +54,28 @@ export const LoginForm = ({
             ¿Olvidaste tu contraseña?
           </Link>
         </div>
-        <Input
-          id="password"
-          type="password"
-          name="password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="h-11 rounded-lg border-gray-200 bg-gray-50 focus:bg-white text-sm transition-colors"
-        />
+        <div className="relative">
+          <Input
+            id="password"
+            type={showPassword ? "text" : "password"}
+            name="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="h-11 rounded-lg border-gray-200 bg-gray-50 focus:bg-white text-sm transition-colors pr-10"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            {showPassword ? (
+              <EyeOff className="h-4 w-4" />
+            ) : (
+              <Eye className="h-4 w-4" />
+            )}
+          </button>
+        </div>
       </div>
 
       {state?.error && (
