@@ -10,7 +10,7 @@ export function AppFrame({ src, title }: AppFrameProps) {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className="flex-1 min-h-0" style={{ height: 'calc(100vh - 8rem)' }}>
+    <div className="flex-1 min-h-0 h-full">
       {isLoading && (
         <div className="flex items-center justify-center h-full">
           <div className="flex flex-col items-center gap-3">
