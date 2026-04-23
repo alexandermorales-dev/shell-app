@@ -14,10 +14,10 @@ function isNavGroup(item: NavLink | NavGroup): item is NavGroup {
 
 interface SidebarNavClientProps {
   userPermsByApp: Record<string, string[]>;
-  userRole?: string;
+  userRolesByApp: Record<string, string>;
 }
 
-export function SidebarNavClient({ userPermsByApp, userRole }: SidebarNavClientProps) {
+export function SidebarNavClient({ userPermsByApp, userRolesByApp }: SidebarNavClientProps) {
   const pathname = usePathname();
   const currentApp = getAppByPath(pathname);
   const { onClose } = useMobileSidebar();
@@ -119,9 +119,10 @@ export function SidebarNavClient({ userPermsByApp, userRole }: SidebarNavClientP
   };
 
   const userPerms = userPermsByApp[currentApp.id] ?? [];
+  const userRole = userRolesByApp[currentApp.dbSlug ?? currentApp.id];
 
   const canAccess = (link: NavLink): boolean => {
-    // Admins and superadmins can see all links
+    // Admins and superadmins can see all links (app-specific role)
     const lowerRole = userRole?.toLowerCase();
     if (lowerRole === "admin" || lowerRole === "superadmin") return true;
 

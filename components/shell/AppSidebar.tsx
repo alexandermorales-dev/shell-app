@@ -1,11 +1,11 @@
-import { getUserPermissionsByApp, getUserRole } from "@/actions/apps";
+import { getUserPermissionsByApp, getUserRolesByApp } from "@/actions/apps";
 import { SidebarNavClient } from "./SidebarNavClient";
 import { apps } from "@/config/apps";
 
 export async function AppSidebar() {
-  const [dbPerms, role] = await Promise.all([
+  const [dbPerms, userRolesByApp] = await Promise.all([
     getUserPermissionsByApp(),
-    getUserRole()
+    getUserRolesByApp()
   ]);
 
   const userPermsByApp: Record<string, string[]> = {};
@@ -16,5 +16,5 @@ export async function AppSidebar() {
     }
   }
 
-  return <SidebarNavClient userPermsByApp={userPermsByApp} userRole={role} />;
+  return <SidebarNavClient userPermsByApp={userPermsByApp} userRolesByApp={userRolesByApp} />;
 }
